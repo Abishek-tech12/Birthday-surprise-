@@ -1,0 +1,152 @@
+/* Basic Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed from center to flex-start to allow scrolling */
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto; /* Allow vertical scroll if needed */
+    background: linear-gradient(to bottom, #7a0050, #ff1493);
+    text-align: center;
+}
+
+/* Animation Canvas */
+canvas#animation-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Main Content Styling */
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 20px 20px 60px; /* Added bottom padding to prevent cutoff */
+    max-width: 900px;
+    margin-top: 40px; /* Add some top margin */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+/* Message Lines */
+.message-line {
+    font-family: 'Shantell Sans', cursive;
+    font-size: 1.8em; /* Reduced font size */
+    font-weight: 700;
+    margin-bottom: 30px; /* Reduced margin */
+    line-height: 1.4;
+    color: #ffccff;
+    text-shadow: 0 0 12px #ff69b4, 0 0 25px #ff1493, 0 0 35px rgba(255,255,255,0.5);
+    min-height: 1.3em;
+}
+
+/* Cursor */
+.thank-you-cursor {
+    display: inline-block;
+    opacity: 0;
+    animation: blinkCursor 0.8s infinite;
+    color: #fff;
+    vertical-align: middle;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Gift Section */
+.gift-section {
+    margin-top: 40px; /* Reduced margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emoji-gift {
+    font-size: 3em; /* Reduced size */
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.gift-text {
+    font-family: 'Shantell Sans', cursive;
+    font-size: 1.4em; /* Reduced size */
+    margin-top: 12px;
+    color: #fff;
+    text-shadow:
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        0 0 10px rgba(0,0,0,0.8);
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Chocolate Shower */
+.chocolate {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #5C3317;
+    border-radius: 3px;
+    opacity: 0;
+    animation: fallChocolate 5s linear forwards;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.chocolate:nth-child(even) {
+    background-color: #8B4513;
+    border-radius: 50%;
+}
+
+@keyframes fallChocolate {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0.5; }
+}
+
+/* Star Sprinkling */
+.star {
+    position: absolute;
+    font-size: 1.5em;
+    opacity: 0;
+    animation: twinkleStar 3s ease-out forwards;
+    text-shadow: 0 0 5px rgba(255,255,0,0.7);
+}
+
+@keyframes twinkleStar {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    20% { transform: scale(1) rotate(360deg); opacity: 1; }
+    80% { opacity: 0.7; }
+    100% { transform: scale(0.5) rotate(720deg); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content { max-width: 700px; margin-top: 30px; padding-bottom: 50px; }
+    .message-line { font-size: 1.4em; margin-bottom: 25px; }
+    .emoji-gift { font-size: 2.5em; }
+    .gift-text { font-size: 1.1em; margin-top: 10px; }
+    .chocolate { width: 15px; height: 15px; }
+    .star { font-size: 1em; }
+}
+
+@media (max-width: 480px) {
+    .content { max-width: 90%; margin-top: 20px; padding-bottom: 40px; }
+    .message-line { font-size: 1.1em; margin-bottom: 20px; }
+    .emoji-gift { font-size: 2em; }
+    .gift-text { font-size: 1em; margin-top: 8px; }
+    .chocolate { width: 10px; height: 10px; }
+    .star { font-size: 0.8em; }
+}

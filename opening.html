@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise for Samyutha</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Shantell+Sans:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="opening-page-style.css">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Blended Background (Single Photo) -->
+  <div class="background-container">
+    <div class="bg-photo" style="background-image: url('opening photo1.jpg');"></div>
+  </div>
+
+  <!-- Blooming Hearts Container -->
+  <div id="blooming-hearts-container"></div>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Heart-Shaped Photo -->
+    <div class="heart-container-opening">
+      <div class="heart-icon">
+        <img src="opening photo2.jpg" alt="Opening Photo" class="heart-image">
+      </div>
+    </div>
+
+    <!-- Wish Text -->
+    <div class="wish-text-box">
+      <span id="opening-typewriter-text"></span>
+      <span class="cursor">|</span>
+    </div>
+
+    <!-- Surprise Button -->
+    <a href="index.html" class="surprise-button" id="surpriseButton">
+      SURPRISE!
+    </a>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" autoplay loop muted>
+    <source src="opening-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="opening-page-script.js"></script>
+</body>
+</html>

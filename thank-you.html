@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You & Happy Birthday!</title>
+    <link rel="stylesheet" href="thank-you-style.css">
+    <!-- Using Google Fonts from the previous page for consistency -->
+    <!-- Pacifico for general lovely text, Shantell Sans for main messages -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Shantell+Sans:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Canvas for stars and chocolates -->
+    <canvas id="animation-canvas" aria-hidden="true"></canvas> 
+
+    <!-- Background Music for this page -->
+    <audio id="thank-you-music" loop>
+        <source src="thank you song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="content">
+        <p class="message-line">
+            <span id="message-text-1" aria-live="polite"></span><span class="cursor thank-you-cursor">|</span>
+        </p>
+        <p class="message-line">
+            <span id="message-text-2" aria-live="polite"></span><span class="cursor thank-you-cursor">|</span>
+        </p>
+        <p class="message-line">
+            <span id="message-text-3" aria-live="polite"></span><span class="cursor thank-you-cursor">|</span>
+        </p>
+        
+        <div class="gift-section">
+            <span class="emoji-gift" aria-label="Gift box emoji">🎁</span>
+            <p class="gift-text">A small gift by Abishek.</p>
+        </div>
+    </div>
+
+    <script src="thank-you-script.js"></script>
+</body>
+</html>

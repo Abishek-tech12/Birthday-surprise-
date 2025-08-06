@@ -1,0 +1,492 @@
+/* Universal Resets & Basic Body Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffe1e1, #ffb6d9);
+}
+
+audio {
+  display: none;
+}
+
+/* Z-Index Hierarchy */
+/* -3: Blended photos background */
+/* -2: Fireworks canvas */
+/* 1: Stickers (if added) */
+/* 2: Balloons / Sprinkling Hearts */
+/* 100: Popups */
+
+/* Fireworks Canvas */
+#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Blended Photo Faces Background */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.bg-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 250%;
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+  filter: blur(2px) brightness(1.2);
+  animation: bgZoomPan 60s infinite alternate linear;
+}
+
+/* Positioning for each photo */
+.bg-photo:nth-child(1) {
+  top: -10%;
+  left: -10%;
+  transform: scale(1.05) rotate(5deg);
+  background-position: 50% 30%;
+  animation-delay: 0s;
+}
+
+.bg-photo:nth-child(2) {
+  top: 10%;
+  left: 10%;
+  transform: scale(1.1) rotate(-8deg);
+  background-position: 45% 40%;
+  animation-delay: 15s;
+}
+
+.bg-photo:nth-child(3) {
+  top: -5%;
+  left: 25%;
+  transform: scale(0.95) rotate(12deg);
+  background-position: 55% 35%;
+  animation-delay: 30s;
+}
+
+.bg-photo:nth-child(4) {
+  top: 15%;
+  left: -25%;
+  transform: scale(1.15) rotate(-3deg);
+  background-position: 60% 45%;
+  animation-delay: 45s;
+}
+
+/* Background Animation */
+@keyframes bgZoomPan {
+  0% { transform: scale(1) translate(0%, 0%); }
+  50% { transform: scale(1.1) translate(-5%, 5%); }
+  100% { transform: scale(1) translate(0%, 0%); }
+}
+
+/* Main Title Styling */
+.page-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: #ff1493;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Glow Name Animation */
+.glow-name {
+  position: relative;
+  z-index: 2;
+  animation: multiColorChange 4s infinite alternate;
+}
+
+@keyframes multiColorChange {
+  0% { color: #ff0066; }
+  25% { color: #ff9900; }
+  50% { color: #33ccff; }
+  75% { color: #9933ff; }
+  100% { color: #ff0066; }
+}
+
+/* Typewriter Cursor */
+.cursor {
+  font-family: 'Anton', sans-serif;
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+  display: inline-block;
+  opacity: 1;
+  color: #fff;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Floating Balloons */
+#balloons-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF5E7B" d="M50,0 C70,-5 100,20 100,50 C100,80 75,100 50,100 C25,100 0,80 0,50 C0,20 30,-5 50,0 Z"/><path fill="%23E03A5F" d="M50,100 L45,110 L55,110 Z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: -150px;
+  animation: ascend linear forwards;
+  transform: rotate(var(--rotation));
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes ascend {
+  from { transform: translateY(0) rotate(var(--rotation, 0deg)); opacity: 1; }
+  to { transform: translateY(-120vh) rotate(var(--rotation, 0deg)); opacity: 0.7; }
+}
+
+/* Sprinkling Hearts */
+#sparkle-hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sparkle-heart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #ff99cc;
+  bottom: -50px;
+  animation: floatFade 3s ease-out forwards;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.sparkle-heart::before,
+.sparkle-heart::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 25px;
+  border-radius: 15px 15px 0 0;
+  background: #ff99cc;
+  top: 0;
+}
+
+.sparkle-heart::before {
+  left: 15px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.sparkle-heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes floatFade {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  20% { opacity: 1; transform: translateY(-10vh) scale(1); }
+  100% { transform: translateY(-100vh) scale(0.8); opacity: 0; }
+}
+
+/* Heart Photo Gallery */
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
+}
+
+.heart-container {
+  width: 250px;
+  height: 250px;
+  position: relative;
+}
+
+.heart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #ff69b4;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 135px;
+  height: 220px;
+  border-radius: 135px 135px 0 0;
+  background-color: #ff5e7b;
+}
+
+.heart::before {
+  left: 125px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.heart-image {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 220px;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  z-index: 1;
+  transform: scale(0.9);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.heart-container.active .heart {
+  animation: popOut 0.5s forwards, glow 2s infinite alternate, bounceHeart 0.8s 1;
+}
+
+@keyframes popOut {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px #ff69b4; }
+  to { box-shadow: 0 0 20px #ff1493; }
+}
+
+@keyframes bounceHeart {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.heart-container.active .heart-image {
+  transform: scale(1.2);
+  opacity: 0;
+}
+
+.message-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  line-height: 1.4;
+  color: #333;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.9);
+  z-index: 2;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1rem;
+  box-shadow: 0 0 20px #ffb6d9;
+  border: 2px solid #ffb6d9;
+}
+
+.message-overlay p {
+  margin: 0;
+}
+
+.heart-container.active .message-overlay {
+  display: flex;
+  animation: fadeIn 0.4s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Bottom Note */
+.bottom-note {
+  text-align: center;
+  margin: 30px 0 15px 0;
+  color: #000;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .page-title { font-size: 2.2rem; }
+  .heart-container { width: 200px; height: 200px; }
+  .heart::before, .heart::after { width: 110px; height: 180px; border-radius: 110px 110px 0 0; }
+  .heart::before { left: 100px; }
+  .heart-image { width: 170px; height: 170px; top: 10px; left: 10px; }
+  .message-overlay { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 1.8rem; }
+  .heart-container { width: 180px; height: 180px; }
+  .heart::before, .heart::after { width: 95px; height: 155px; border-radius: 95px 95px 0 0; }
+  .heart::before { left: 90px; }
+  .heart-image { width: 150px; height: 150px; top: 8px; left: 8px; }
+  .message-overlay { font-size: 0.9rem; padding: 15px; }
+}
+/* ... (Existing CSS code for index.html from previous response) ... */
+
+/* Add a small note at the bottom for user instruction */
+.bottom-note {
+  text-align: center;
+  margin: 30px 0 15px 0; /* Adjusted margin to make space for button */
+  color: #000;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+/* NEW Thank You Button */
+.thank-you-button {
+  display: inline-block;
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(45deg, #a70081 0%, #ff69b4 100%); /* A nice vibrant gradient */
+  padding: 15px 40px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+  animation: buttonPumping 2s ease-in-out infinite alternate, buttonGlow 3s infinite ease-in-out;
+  position: relative;
+  overflow: hidden; /* For blooming effect */
+  transition: transform 0.2s ease-in-out;
+  margin-top: 30px; /* Space from note */
+  z-index: 1; /* Ensure it's above background elements */
+}
+
+.thank-you-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 105, 180, 1);
+}
+
+/* Pumping Effect */
+@keyframes buttonPumping {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Glowing Effect */
+@keyframes buttonGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 105, 180, 0.7); }
+  50% { box-shadow: 0 0 30px rgba(255, 105, 180, 1); }
+}
+
+/* Blooming/Popups Effect with Pseudo-elements */
+.thank-you-button::before,
+.thank-you-button::after {
+  content: '💖'; /* Small hearts as "popups" */
+  position: absolute;
+  font-size: 1.2em;
+  opacity: 0;
+  pointer-events: none; /* Make them unclickable */
+  animation: bloomPop 2.5s ease-out infinite; /* Animation for popping out */
+  text-shadow: 0 0 5px #ffccff; /* Gentle glow for hearts */
+  will-change: transform, opacity; /* Performance optimization */
+}
+
+.thank-you-button::before {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s; /* Start immediately */
+}
+
+.thank-you-button::after {
+  bottom: 10%;
+  right: 15%;
+  font-size: 1.5em; /* Slightly larger for the second heart */
+  animation-delay: 0.8s; /* Staggered start */
+}
+
+@keyframes bloomPop {
+  0% { transform: scale(0) translateY(0); opacity: 0; }
+  20% { transform: scale(1) translateY(-10px); opacity: 1; }
+  100% { transform: scale(0.5) translateY(-50px); opacity: 0; } /* Fade out and float up */
+}
+
+/* Responsive Adjustments for new button */
+@media (max-width: 768px) {
+    .thank-you-button {
+        font-size: 1.6rem;
+        padding: 12px 30px;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .thank-you-button {
+        font-size: 1.3rem;
+        padding: 10px 25px;
+        margin-top: 15px;
+    }
+    .thank-you-button::before,
+    .thank-you-button::after {
+        font-size: 0.9em;
+    }
+}

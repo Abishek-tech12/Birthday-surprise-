@@ -1,0 +1,276 @@
+/* opening-page-style.css */
+
+/* Basic Page Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pacifico', cursive;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #05051a;
+}
+
+/* Fireworks Canvas */
+#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Blended Background (Single Photo) - BRIGHTER VERSION */
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  filter: grayscale(20%) contrast(1.2) brightness(1.1); /* Adjusted for better visibility */
+}
+
+/* Background photo styling - BRIGHTER VERSION */
+.bg-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8; /* Increased opacity */
+  mix-blend-mode: soft-light;
+  animation: bg-blend-fade 18s infinite ease-in-out alternate;
+}
+
+@keyframes bg-blend-fade {
+  0% { opacity: 0.6; transform: scale(1.05); } /* Increased minimum opacity */
+  20% { opacity: 0.8; transform: scale(1); } /* Brighter mid opacity */
+  40% { opacity: 0.8; }
+  60% { opacity: 0.8; transform: scale(1.02); }
+  80% { opacity: 0.8; }
+  100% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Main Content Area - Slightly adjusted for better contrast */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 90%;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
+}
+
+/* Heart-shaped Photo Container - More vibrant */
+.heart-container-opening {
+  width: 280px;
+  height: 260px;
+  margin: 0 auto 30px;
+  position: relative;
+  animation: floatHeart 6s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); /* Added glow effect */
+}
+
+.heart-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 70% 70% / 60% 60% 40% 40%;
+  border: 8px solid rgba(255, 255, 255, 0.9); /* Brighter border */
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.9), 0 0 60px rgba(255, 0, 102, 0.5) inset;
+  filter: brightness(1.2); /* Increased brightness */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Rest of the CSS remains the same as previous version */
+.heart-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Wish Text Box - More visible */
+.wish-text-box {
+  font-family: 'Shantell Sans', cursive;
+  font-size: 3em;
+  color: #ffccff;
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px rgba(255,255,255,0.8); /* Stronger text shadow */
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 40px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Rest of the CSS remains exactly the same as before */
+.wish-text-box .cursor {
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.surprise-button {
+  display: inline-block;
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2rem;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(45deg, #ff1493 0%, #ff69b4 100%);
+  padding: 18px 50px;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(255,20,147,0.8);
+  animation: buttonPop 1.5s ease-out infinite alternate, glowingShadow 2s infinite ease-in-out;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Added text shadow for better visibility */
+}
+
+.surprise-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255,20,147,1);
+}
+
+@keyframes buttonPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glowingShadow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,20,147,0.8); }
+  50% { box-shadow: 0 0 40px rgba(255,105,180,0.9); }
+}
+
+.surprise-button::before,
+.surprise-button::after {
+  content: '💖';
+  position: absolute;
+  font-size: 1.5em;
+  opacity: 0;
+  pointer-events: none;
+  animation: sprinkleHearts 2s ease-out infinite;
+  text-shadow: 0 0 5px #ffccff;
+}
+
+.surprise-button::before {
+  top: 5%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.surprise-button::after {
+  bottom: 10%;
+  right: 15%;
+  font-size: 1.2em;
+  animation-delay: 0.5s;
+}
+
+@keyframes sprinkleHearts {
+  0% { transform: translateY(0) scale(0); opacity: 0; }
+  20% { opacity: 1; transform: scale(1); }
+  80% { opacity: 0.5; transform: translateY(-30px) scale(0.8); }
+  100% { transform: translateY(-50px) scale(0.6); opacity: 0; }
+}
+
+#blooming-hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.blooming-heart {
+  position: absolute;
+  font-size: 2.5em;
+  color: #ffccff;
+  opacity: 0;
+  transform: scale(0);
+  animation: bloomAndFade 5s ease-out forwards;
+  text-shadow: 0 0 10px rgba(255,105,180,0.7);
+}
+
+@keyframes bloomAndFade {
+  0% { opacity: 0; transform: scale(0); }
+  10% { opacity: 0.5; transform: scale(0.8); }
+  20% { opacity: 1; transform: scale(1.1); }
+  30% { opacity: 0.9; transform: scale(1); }
+  70% { opacity: 0.7; }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .heart-container-opening {
+    width: 200px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  .heart-icon {
+    border-width: 5px;
+  }
+  .wish-text-box {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  .surprise-button {
+    font-size: 1.5rem;
+    padding: 12px 30px;
+  }
+  .blooming-heart {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .heart-container-opening {
+    width: 150px;
+    height: 135px;
+  }
+  .wish-text-box {
+    font-size: 1.5em;
+  }
+  .surprise-button {
+    font-size: 1.2rem;
+    padding: 10px 25px;
+  }
+  .surprise-button::before,
+  .surprise-button::after {
+    font-size: 1em;
+  }
+  .blooming-heart {
+    font-size: 1.2em;
+  }
+}

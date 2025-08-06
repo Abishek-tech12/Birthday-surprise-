@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Happy Birthday, SAMYUKTHA! ✨</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+
+  <!-- Blended Background Photos -->
+  <div class="background-container" aria-hidden="true">
+    <div class="bg-photo" style="background-image: url('photo1.jpg');"></div>
+    <div class="bg-photo" style="background-image: url('photo2.jpg');"></div>
+    <div class="bg-photo" style="background-image: url('photo3.jpg');"></div>
+    <div class="bg-photo" style="background-image: url('photo4.jpg');"></div>
+  </div>
+
+  <!-- Background Music (Looping, User-Triggered) -->
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Photo-Specific Songs (No Loop, Hidden) -->
+  <audio id="picsong1">
+    <source src="picsong1.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="picsong2">
+    <source src="picsong2.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="picsong3">
+    <source src="picsong3.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="picsong4">
+    <source src="picsong4.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Main Title with Typewriter Effect -->
+  <h1 class="page-title">
+    <span id="typewriter-text" class="glow-name"></span>
+    <span class="cursor" aria-hidden="true">|</span>
+  </h1>
+
+  <!-- Floating Balloons & Hearts Containers -->
+  <div id="balloons-container" aria-hidden="true"></div>
+  <div id="sparkle-hearts-container" aria-hidden="true"></div>
+
+  <!-- Heart Photo Gallery -->
+  <div class="gallery">
+    <div class="heart-container">
+      <div class="heart" 
+           data-message='🌟 Are you the birthday girl? Because you just lit up the room without blowing a candle. Keep smiling always and go to higher levels.'
+           data-song="picsong1">
+        <div class="heart-image" style="background-image: url('photo1.jpg');"></div>
+        <div class="message-overlay"></div>
+      </div>
+    </div>
+
+    <div class="heart-container">
+      <div class="heart" 
+           data-message='🦋 Are you a butterfly? Because whenever you’re around, life feels lighter, brighter, and more beautiful—especially on your birthday.'
+           data-song="picsong2">
+        <div class="heart-image" style="background-image: url('photo2.jpg');"></div>
+        <div class="message-overlay"></div>
+      </div>
+    </div>
+
+    <div class="heart-container">
+      <div class="heart" 
+           data-message='✨ Are you a fairy angel? Even if we’re just friends, whenever I see you, my heart takes off like magic… Happy Birthday!'
+           data-song="picsong3">
+        <div class="heart-image" style="background-image: url('photo3.jpg');"></div>
+        <div class="message-overlay"></div>
+      </div>
+    </div>
+
+    <div class="heart-container">
+      <div class="heart" 
+           data-message='🌸 Happy Birthday! May your life be as magical as your smile. Keep shining and smiling—you deserve endless happiness. 🎂✨'
+           data-song="picsong4">
+        <div class="heart-image" style="background-image: url('photo4.jpg');"></div>
+        <div class="message-overlay"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructional Note -->
+  <div class="bottom-note">
+    <strong>Click the picture to see the magical lines...</strong>
+  </div>
+
+  <!-- NEW Thank You Button -->
+  <a href="thank-you.html" class="thank-you-button">
+    Thank You!
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
